@@ -426,53 +426,48 @@ function recebeResposta() {
     escolhaResposta[0] = document.getElementsByClassName('respostasDesafio')[0];
     escolhaResposta[0].onclick = function () {
         resposta = 0;
-        clicado++;
+        // clicado++;
         verificacaoResposta(resposta, escolhaResposta[0]);
     }
 
     escolhaResposta[1] = document.getElementsByClassName('respostasDesafio')[1];
     escolhaResposta[1].onclick = function () {
         resposta = 1;
-        clicado++;
         verificacaoResposta(resposta, escolhaResposta[1]);
     }
 
     escolhaResposta[2] = document.getElementsByClassName('respostasDesafio')[2];
     escolhaResposta[2].onclick = function () {
         resposta = 2;
-        clicado++;
         verificacaoResposta(resposta, escolhaResposta[2]);
     }
 
     escolhaResposta[3] = document.getElementsByClassName('respostasDesafio')[3];
     escolhaResposta[3].onclick = function () {
         resposta = 3;
-        clicado++;
         verificacaoResposta(resposta, escolhaResposta[3]);
 
     }
 
 
     function verificacaoResposta() {
-        if (clicado == 1) {
-            if (escolhaResposta[resposta].innerText == desafio[i].correta) {
-                pergunta.innerText = 'Resposta correta!';
-                pergunta.classList.add('efeitoCorreta');
-                conteudo = document.createTextNode(`Receba R$ ${desafio[i].receba}!`);
+        document.getElementById('respostasDesafio').innerHTML = null;
+        if (escolhaResposta[resposta].innerText == desafio[i].correta) {
+            pergunta.innerText = 'Resposta correta!';
+            pergunta.classList.add('efeitoCorreta');
+            conteudo = document.createTextNode(`Receba R$ ${desafio[i].receba}!`);
 
-            } else {
-                pergunta.innerText = 'Resposta incorreta!';
-                pergunta.classList.add('efeitoIncorreta');
-                var doeReceba = document.createElement('p');
-                conteudo = document.createTextNode(`Doe R$ ${desafio[i].doe}!`);
-            }
-            //Doe ou receba:
+        } else {
+            pergunta.innerText = 'Resposta incorreta!';
+            pergunta.classList.add('efeitoIncorreta');
             var doeReceba = document.createElement('p');
-            pergunta.appendChild(doeReceba);
-            doeReceba.appendChild(conteudo);
-            embaralhador++;
+            conteudo = document.createTextNode(`Doe R$ ${desafio[i].doe}!`);
         }
-
+        //Doe ou receba:
+        var doeReceba = document.createElement('p');
+        pergunta.appendChild(doeReceba);
+        doeReceba.appendChild(conteudo);
+        embaralhador++;
     }
 }
 
@@ -798,5 +793,4 @@ function vetorAleatorio2() {
         numeros2[cont2] = aleatorio;
         cont2++;
     } while (cont2 != 31);
-   
 }
